@@ -1,10 +1,12 @@
-import React from "react";
-import classes from "./App.module.scss";
-import Header from "../Header/Header";
-import Filter from "../Filter/Filter";
-import Search from "../Search/Search";
-import FlightList from "../FlightList/FlightList";
-import Footer from "../Footer/Footer";
+import React from 'react';
+
+import Header from '../Header/Header';
+import Filter from '../Filter/Filter';
+import Search from '../Search/Search';
+import FlightList from '../FlightList/FlightList';
+import Footer from '../Footer/Footer';
+
+import classes from './App.module.scss';
 
 function App() {
   return (
