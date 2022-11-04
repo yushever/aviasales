@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+  padding: 0;
+  /* cursor: url("../img/icons/сursor.png") 2 2, auto; */
+}
+* {
+  font-family: "Open Sans", sans-serif;
+  cursor: url("../img/icons/сursor.svg") 2 2, auto;
+}

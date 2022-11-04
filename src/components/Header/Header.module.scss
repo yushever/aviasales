@@ -1,0 +1,15 @@
+.img {
+  width: 60px;
+  height: 60px;
+}
+.header {
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 420px) {
+  .header {
+    height: 100px;
+  }
+}

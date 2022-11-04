@@ -1,0 +1,45 @@
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 502px;
+  height: 50px;
+}
+.button {
+  background-color: #ffffff;
+  width: 167px;
+  height: 50px;
+  border: none;
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
+  color: #4a4a4a;
+}
+.button-fast {
+  border-top: 1px solid #dfe5ec;
+  border-bottom: 1px solid #dfe5ec;
+}
+.button-cheap {
+  border: 1px solid #dfe5ec;
+  border-radius: 5px 0 0 5px;
+}
+.button-optimal {
+  border: 1px solid #dfe5ec;
+  border-radius: 0 5px 5px 0;
+}
+.button:active {
+  background-color: #2196f3;
+  color: #ffffff;
+}
+@media (max-width: 420px) {
+  .buttons {
+    margin-top: 20px;
+    width: 350px;
+  }
+  .button {
+    width: 150px;
+    font-size: 0.7em;
+  }
+}

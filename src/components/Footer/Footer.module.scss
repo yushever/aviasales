@@ -1,0 +1,18 @@
+.button {
+  width: 502px;
+  height: 50px;
+  background-color: #2196f3;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #ffffff;
+  border: none;
+}
+@media (max-width: 420px) {
+  .button {
+    width: 350px;
+  }
+}
