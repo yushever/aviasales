@@ -1,6 +1,8 @@
-import classes from './Search.module.scss';
 import { connect } from 'react-redux';
+
 import * as actions from '../../actions';
+
+import classes from './Search.module.scss';
 
 const Search = (props: any) => {
   return (

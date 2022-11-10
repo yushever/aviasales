@@ -29,7 +29,11 @@
   border: 1px solid #dfe5ec;
   border-radius: 0 5px 5px 0;
 }
-.button:active {
+// .button:active {
+//   background-color: #2196f3;
+//   color: #ffffff;
+// }
+.selected {
   background-color: #2196f3;
   color: #ffffff;
 }
