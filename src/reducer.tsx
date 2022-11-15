@@ -1,15 +1,24 @@
 import { Reducer } from 'redux';
 
 const reducer: Reducer = (
-  state: { all: boolean; direct: boolean; layover1: boolean; layover2: boolean; layover3: boolean; filter: string } = {
+  state: {
+    all: boolean;
+    direct: boolean;
+    layover1: boolean;
+    layover2: boolean;
+    layover3: boolean;
+    filter: string;
+    tickets: [];
+  } = {
     all: false,
     direct: false,
     layover1: false,
     layover2: false,
     layover3: false,
     filter: 'cheapest',
+    tickets: [],
   },
-  action: { type: string }
+  action: { type: string; payload?: any }
 ) => {
   console.log(action);
   switch (action.type) {
@@ -44,6 +53,8 @@ const reducer: Reducer = (
       return { ...state, filter: 'fastest' };
     case 'OPTIMAL':
       return { ...state, filter: 'optimal' };
+    case 'SET':
+      return { ...state, tickets: action.payload };
 
     default:
       return state;

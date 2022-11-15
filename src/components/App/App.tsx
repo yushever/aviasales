@@ -1,14 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Header from '../Header/Header';
 import Filter from '../Filter/Filter';
 import Search from '../Search/Search';
 import FlightList from '../FlightList/FlightList';
 import Footer from '../Footer/Footer';
+import * as actions from '../../actions';
 
 import classes from './App.module.scss';
 
-function App() {
+function App(props: any) {
+  props.getTickets();
   return (
     <div className={classes.app}>
       <div className={classes.header}>
@@ -34,4 +37,9 @@ function App() {
   );
 }
 
-export default App;
+// export default App;
+const mapStateToProps = (state: {}) => {
+  return {};
+};
+
+export default connect(mapStateToProps, actions)(App);

@@ -86,5 +86,3 @@ const mapStateToProps = (state: {
 };
 
 export default connect(mapStateToProps, actions)(Search);
-
-// export default Search;
