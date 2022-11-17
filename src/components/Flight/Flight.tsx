@@ -8,11 +8,8 @@ const Flight = (props: any) => {
 
   let date0: Date = new Date(ticket.segments[0].date);
   let date1: Date = new Date(ticket.segments[1].date);
-  let duration0: number = ticket.segments[0].duration;
-  let duration1: number = ticket.segments[1].duration;
-  let time0: Date = add(date0, { minutes: duration0 });
-  let time1: Date = add(date1, { minutes: duration1 });
-
+  let time0: Date = add(date0, { minutes: ticket.segments[0].duration });
+  let time1: Date = add(date1, { minutes: ticket.segments[1].duration });
   const start0 = format(new Date(date0), 'HH:mm');
   const start1 = format(new Date(date1), 'HH:mm');
   const result0 = format(new Date(time0), 'HH:mm');
@@ -29,6 +26,7 @@ const Flight = (props: any) => {
       return `${length} пересадки`;
     }
   }
+
   function convMin(minutes: number) {
     if (minutes >= 60) {
       return ((minutes / 60) | 0) + 'ч ' + (minutes % 60) + 'м';
@@ -38,7 +36,9 @@ const Flight = (props: any) => {
     <div className={classes.container}>
       <div className={classes.header}>
         <div className={classes.price}>{price.toString().replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1' + ' ')} Р</div>
-        <div className={classes.airline}>{ticket.carrier}</div>
+        <div className={classes.airline}>
+          <img src={`//pics.avs.io/99/36/${ticket.carrier}.png`}></img>
+        </div>
       </div>
       <div className={classes.flights}>
         <div className={classes.content}>
