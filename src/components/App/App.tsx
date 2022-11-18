@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 
 import Header from '../Header/Header';
@@ -37,8 +36,7 @@ function App(props: any) {
   );
 }
 
-// export default App;
-const mapStateToProps = (state: {}) => {
+const mapStateToProps = () => {
   return {};
 };
 

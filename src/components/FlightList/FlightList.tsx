@@ -1,9 +1,13 @@
 import { connect } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+import { Spin } from 'antd';
 
 import Flight from '../Flight/Flight';
 import * as actions from '../../actions';
 
-// import classes from './FlightList.module.scss';
+import 'antd/dist/antd.css';
+
+import classes from './FlightList.module.scss';
 
 const FlightList = (props: {
   all: boolean;
@@ -13,6 +17,8 @@ const FlightList = (props: {
   layover3: boolean;
   filter: 'cheapest';
   tickets: [];
+  loading: boolean;
+  number: number;
 }) => {
   console.log('ticketsInFlights:', props.tickets);
 
@@ -61,15 +67,24 @@ const FlightList = (props: {
   }
 
   console.log('FILTER', filteredElements);
+  let loader = props.loading ? <Spin className={classes.spinner} /> : null;
 
-  const elements = filteredElements.slice(0, 5).map((ticket: { price: number; carrier: string; segments: [] }) => {
-    return (
-      <div key={ticket.price}>
-        <Flight ticket={ticket} />
-      </div>
-    );
-  });
-  return <ul>{elements}</ul>;
+  const elements = filteredElements
+    .slice(0, props.number)
+    .map((ticket: { price: number; carrier: string; segments: [] }) => {
+      const id = uuidv4();
+      return (
+        <div key={id}>
+          <Flight ticket={ticket} />
+        </div>
+      );
+    });
+  return (
+    <div className={classes.container}>
+      {loader}
+      <ul>{elements}</ul>
+    </div>
+  );
 };
 
 const mapStateToProps = (state: {
@@ -80,6 +95,8 @@ const mapStateToProps = (state: {
   layover3: boolean;
   filter: 'cheapest';
   tickets: [];
+  loading: boolean;
+  number: number;
 }) => {
   return {
     all: state.all,
@@ -89,6 +106,8 @@ const mapStateToProps = (state: {
     layover3: state.layover3,
     filter: state.filter,
     tickets: state.tickets,
+    loading: state.loading,
+    number: state.number,
   };
 };
 

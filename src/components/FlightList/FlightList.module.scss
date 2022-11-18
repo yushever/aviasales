@@ -1,0 +1,15 @@
+.spinner {
+  top: 10px;
+  left: 245px;
+  padding-top: 20px;
+}
+.container {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 420px) {
+  .container {
+    width: 310px;
+  }
+}

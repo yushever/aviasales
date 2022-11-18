@@ -9,6 +9,8 @@ const reducer: Reducer = (
     layover3: boolean;
     filter: string;
     tickets: [];
+    loading: boolean;
+    number: number;
   } = {
     all: false,
     direct: false,
@@ -17,10 +19,11 @@ const reducer: Reducer = (
     layover3: false,
     filter: 'cheapest',
     tickets: [],
+    loading: true,
+    number: 5,
   },
-  action: { type: string; payload?: any }
+  action: { type?: string; payload?: any } = {}
 ) => {
-  console.log(action);
   switch (action.type) {
     case 'ALL':
       if (state.all === true) {
@@ -53,8 +56,12 @@ const reducer: Reducer = (
       return { ...state, filter: 'fastest' };
     case 'OPTIMAL':
       return { ...state, filter: 'optimal' };
+    case '5MORE':
+      return { ...state, number: state.number + 5 };
     case 'SET':
-      return { ...state, tickets: action.payload };
+      return { ...state, tickets: [...state.tickets, ...action.payload] };
+    case 'ALLSET':
+      return { ...state, loading: false };
 
     default:
       return state;

@@ -1,13 +1,6 @@
 import GetTickets from './components/services/service';
 
-const tickets = new GetTickets();
-
-function showAllTickets(dispatch: any) {
-  tickets.getAllTickets().then((ticket) => {
-    console.log('showAllTickets:', ticket);
-    dispatch(setTickets(ticket));
-  });
-}
+const ticketsService = new GetTickets();
 
 export const checkAll = () => ({ type: 'ALL' });
 export const checkDirect = () => ({ type: 'DIRECT' });
@@ -17,16 +10,28 @@ export const checkThree = () => ({ type: '3LAYOVER' });
 export const chooseCheapest = () => ({ type: 'CHEAP' });
 export const chooseFastest = () => ({ type: 'FAST' });
 export const chooseOptimal = () => ({ type: 'OPTIMAL' });
+export const showMoreTickets = () => ({ type: '5MORE' });
 export const setTickets = (tickets: { tickets: [] }) => {
   return {
     type: 'SET',
     payload: tickets.tickets,
   };
 };
+export const setAllTickets = () => ({ type: 'ALLSET' });
+
+async function showAllTickets(dispatch: any) {
+  let tickets = await ticketsService.getAllTickets();
+  while (tickets.stop === false) {
+    dispatch(setTickets(tickets));
+    tickets = await ticketsService.getAllTickets();
+  }
+  console.log('all tickets loaded');
+  dispatch(setAllTickets());
+}
 export const getTickets = () => {
   return (dispatch: any) => {
     {
-      tickets.getId().then((res) => {
+      ticketsService.getId().then((res) => {
         console.log('getTickets:', res);
         showAllTickets(dispatch);
       });

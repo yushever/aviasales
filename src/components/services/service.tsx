@@ -18,7 +18,13 @@ export default class GetTickets {
   }
 
   async getAllTickets() {
-    const res = await this.getResource(`https://front-test.dev.aviasales.ru/tickets?searchId=${this.id}`);
-    return res;
+    let res;
+    try {
+      res = await this.getResource(`https://front-test.dev.aviasales.ru/tickets?searchId=${this.id}`);
+      return res;
+    } catch (err) {
+      console.log('Error:', err);
+      return { tickets: [], stop: false };
+    }
   }
 }
