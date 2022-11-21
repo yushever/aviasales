@@ -1,8 +1,14 @@
 import { format, add } from 'date-fns';
 
+import { ITicket } from '../../models';
+
 import classes from './Flight.module.scss';
 
-const Flight = (props: any) => {
+interface FlightProps {
+  ticket: ITicket;
+}
+
+const Flight = (props: FlightProps) => {
   const { ticket } = props;
   let price = ticket.price;
 

@@ -25,14 +25,12 @@ async function showAllTickets(dispatch: any) {
     dispatch(setTickets(tickets));
     tickets = await ticketsService.getAllTickets();
   }
-  console.log('all tickets loaded');
   dispatch(setAllTickets());
 }
 export const getTickets = () => {
   return (dispatch: any) => {
     {
-      ticketsService.getId().then((res) => {
-        console.log('getTickets:', res);
+      ticketsService.getId().then(() => {
         showAllTickets(dispatch);
       });
     }

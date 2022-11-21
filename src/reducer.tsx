@@ -1,17 +1,9 @@
 import { Reducer } from 'redux';
 
+import { IState } from './models';
+
 const reducer: Reducer = (
-  state: {
-    all: boolean;
-    direct: boolean;
-    layover1: boolean;
-    layover2: boolean;
-    layover3: boolean;
-    filter: string;
-    tickets: [];
-    loading: boolean;
-    number: number;
-  } = {
+  state: IState = {
     all: false,
     direct: false,
     layover1: false,

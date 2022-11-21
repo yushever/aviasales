@@ -9,7 +9,11 @@ import * as actions from '../../actions';
 
 import classes from './App.module.scss';
 
-function App(props: any) {
+interface AppProps {
+  getTickets: () => void;
+}
+
+function App(props: AppProps) {
   props.getTickets();
   return (
     <div className={classes.app}>

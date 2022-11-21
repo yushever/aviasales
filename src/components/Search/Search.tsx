@@ -1,10 +1,24 @@
 import { connect } from 'react-redux';
 
 import * as actions from '../../actions';
+import { IState } from '../../models';
 
 import classes from './Search.module.scss';
 
-const Search = (props: any) => {
+interface SearchProps {
+  all: boolean;
+  direct: boolean;
+  layover1: boolean;
+  layover2: boolean;
+  layover3: boolean;
+  checkAll: () => void;
+  checkDirect: () => void;
+  checkOne: () => void;
+  checkTwo: () => void;
+  checkThree: () => void;
+}
+
+const Search = (props: SearchProps) => {
   return (
     <div className={classes.container}>
       <div className={classes.header}>Количество пересадок</div>
@@ -69,13 +83,7 @@ const Search = (props: any) => {
   );
 };
 
-const mapStateToProps = (state: {
-  all: boolean;
-  direct: boolean;
-  layover1: boolean;
-  layover2: boolean;
-  layover3: boolean;
-}) => {
+const mapStateToProps = (state: IState) => {
   return {
     all: state.all,
     direct: state.direct,

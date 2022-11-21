@@ -17,11 +17,10 @@ declare global {
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-function loggerMiddleware(store: any): any {
+function loggerMiddleware() {
   return function (next: any) {
-    return function (action: any) {
+    return function (action: {}) {
       const result = next(action);
-      console.log('Middleware', store.getState());
       return result;
     };
   };

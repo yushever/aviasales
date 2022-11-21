@@ -5,7 +5,14 @@ import * as actions from '../../actions';
 
 import classes from './Filter.module.scss';
 
-const Filter = (props: any) => {
+interface FilterProps {
+  filter: string;
+  chooseCheapest: () => void;
+  chooseFastest: () => void;
+  chooseOptimal: () => void;
+}
+
+const Filter = (props: FilterProps) => {
   return (
     <div className={classes.buttons}>
       <button

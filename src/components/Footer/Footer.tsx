@@ -1,10 +1,15 @@
 import { connect } from 'react-redux';
 
 import * as actions from '../../actions';
+import { IState } from '../../models';
 
 import classes from './Footer.module.scss';
 
-const Footer = (props: any) => {
+interface FooterProps {
+  showMoreTickets: () => void;
+}
+
+const Footer = (props: FooterProps) => {
   return (
     <div>
       <button className={classes.button} onClick={props.showMoreTickets}>
@@ -14,7 +19,7 @@ const Footer = (props: any) => {
   );
 };
 
-const mapStateToProps = (state: { number: number }) => {
+const mapStateToProps = (state: IState) => {
   return {
     number: state.number,
   };
